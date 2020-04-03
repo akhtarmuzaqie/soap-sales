@@ -338,9 +338,27 @@ app.get('/adm/soap/:id/trs', adminAuth, (req, res) => {
         })
     })
 })
-//FIX BELOW!
-//====================================   GET ALL TRANSACTION BY ID  (FIX) ==============================================//
-app.get('/adm/soap/trs/', adminAuth, (req, res) => {
+//====================================   GET USER TRANSACTION BY ID ==============================================//
+
+app.get('/adm/usr/:id/trs', adminAuth, (req, res) => {
+    db.query(`
+        select transaction.id_trs, soap.name, soap.stock, soap.price
+        from users
+        right join transaction on users.id_user = transaction.id_user
+        right join soap on transaction.id_soap = soap.id_soap
+        where users.id_user = '`+req.params.id+`'
+    `, (err, result) => {
+        if (err) throw err
+
+        res.json({
+            message: "Getting Transaction Success!",
+            data: result
+        })
+    })
+})
+
+//====================================   GET ALL TRANSACTION   (FIX) ==============================================//
+app.get('/adm/trs', adminAuth, (req, res) => {
     db.query(`
         select * from transaction
     `, (err, result) => {
@@ -355,7 +373,7 @@ app.get('/adm/soap/trs/', adminAuth, (req, res) => {
 
 
 
-  app.listen(1337, () => {
-    console.log('App is running on port 1337!')
+  app.listen(2324, () => {
+    console.log('App is running on port 2324!')
 })
   
