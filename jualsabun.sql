@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2020 at 01:16 PM
+-- Generation Time: Apr 03, 2020 at 02:49 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -60,7 +60,7 @@ CREATE TABLE `soap` (
 --
 
 INSERT INTO `soap` (`id_soap`, `name`, `stock`, `price`) VALUES
-(1, 'Lavender Essence Soap', 19, '45.000'),
+(1, 'Lavender Essence Soap', 18, '45.000'),
 (2, 'Rose Essence Soap', 18, '45.000'),
 (3, 'Anti-Biotic Soap', 18, '65.500');
 
@@ -76,6 +76,13 @@ CREATE TABLE `transaction` (
   `id_soap` bigint(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`id_trs`, `id_user`, `id_soap`, `date`) VALUES
+(5, 1, 1, '2020-03-31 13:05:54');
 
 -- --------------------------------------------------------
 
@@ -141,13 +148,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `soap`
 --
 ALTER TABLE `soap`
-  MODIFY `id_soap` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_soap` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `id_trs` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_trs` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
